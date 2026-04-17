@@ -1,0 +1,13 @@
+@import url("./components/boton.css");
+
+/* Boton de agregar contacto */
+#abrirModal {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background-image: url("../assets/img/boton_agregar.png");
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
