@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Personal</title>
+    <meta name="description" content="Tu Agenda Personal de contactos. Busca y comunicate con quien quieras. Agrega o elimina cualquier contacto que desees." />
+    <link rel="icon" href="./assets/favicon/temp.txt" /> <!-- Cambiar a logo definitivo -->
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+    
+    <header>
+        <div>
+            <img src="./assets/img/temp_img.txt" alt="logo-agenda-personal"/> <!-- Cambiar a logo definitivo -->
+            <h1>Agenda Personal</h1>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- BUSCAR -->
+        <section>
+            <form action="./index.html">
+                <div>
+                    <label>Buscar:</label>
+                    <input type="search">
+                </div>
+            </form>
+        </section>
+
+        <!-- AGREGAR CONTACTO -->
+        <section>
+            <form action="./index.html">
+                <h2>Agrega un nuevo contacto</h2>
+                <div>
+                    <label>Nombre:</label>
+                    <input type="text" required />
+                </div>
+                <div>
+                    <label>Telefono:</label>
+                    <input type="tel" required />
+                </div>
+            </form>
+        </section>
+
+        <!--LISTA DE CONTACTOS -->
+        <section>
+            <ol id="lista-contactos"></ol>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Agenda Personal - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>
