@@ -116,6 +116,12 @@ buscar.addEventListener("input", () => {
     filtrarElementos();
 });
 
+buscar.addEventListener("keypress", (e) =>{
+    if(e.key == "Enter"){
+        buscar.value = ""
+    }
+});
+
 // Filtra los elementos que se muestran en base a la busqueda
 function filtrarElementos() {
 
