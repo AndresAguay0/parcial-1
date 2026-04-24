@@ -1,3 +1,7 @@
+// Variable para mantener control de las IDs
+var ids = -1;
+
+const contactos = [];   // Lista para almacenar los contactos
 
 //AGREGAR CONTACTOS
 let abrir = document.getElementById("abrirModal");
@@ -37,12 +41,27 @@ guardar.addEventListener("click", function(){
     //confirmar que quiere agregar el contacto
     let confirmar = confirm(`¿Desea agregar el contacto ${nombre} ${apellido} con el teléfono ${telefono}?`);
     if(confirmar){
-        //crear contacto
-        let li = document.createElement("li");
-        li.textContent = `${nombre} ${apellido} - ${telefono}`;
+        // //crear contacto
+        // let li = document.createElement("li");
+        // li.textContent = `${nombre} ${apellido} - ${telefono}`;
 
-        //agregar contacto a la lista
-        lista.appendChild(li);
+        // //agregar contacto a la lista
+        // lista.appendChild(li);
+
+        // NUEVA IMPLEMENTACION -------------------------------------------
+
+        ids ++; // Aumento las ids para que no se repitan
+    
+        // Genero el contacto basado en los inputs
+        const contacto = {
+            id: ids,
+            nombre: inputNombre,
+            apellido: inputApellido,
+            telefono: inputTelefono
+        };
+
+        contactos.push(contacto); // Guardo el contacto
+
     }
 
     //limpio los campos del formulario
