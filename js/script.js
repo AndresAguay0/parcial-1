@@ -8,6 +8,8 @@ const contactos = [];
 
 // REFERENCIAS ----------------------------------------------------------------
 const buscar = document.querySelector("#buscar");
+const busDiv = document.getElementById("busqueda-div")
+const abrirBus = document.getElementById("abrir-busqueda")
 
 const abrir = document.getElementById("abrirModal");
 const modal = document.getElementById("modal");
@@ -76,7 +78,7 @@ function validar() {
 
     // Cerrar el modal
     modal.style.display="none";
-};
+}
 
 function addGuardar(nombre, apellido, telefono) {
     ids ++; // Aumento las ids para que no se repitan
@@ -108,10 +110,18 @@ function mostrarElementos(lista) {
     }
 }
 
+
+
 // FILTRAR BUSQUEDA ----------------------------------------------------------------------
 // LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
 buscar.addEventListener("input", () => {
     filtrarElementos();
+});
+
+buscar.addEventListener("keypress", (e) =>{
+    if(e.key == "Enter"){
+        buscar.value = ""
+    }
 });
 
 // Filtra los elementos que se muestran en base a la busqueda
@@ -120,7 +130,7 @@ function filtrarElementos() {
     if(buscar.value){
         let filtrados = [] // Arreglo para guardar temporalmente los contactos filtrados
 
-        let busqueda = buscar.value.toLowerCase(); 
+        let busqueda = buscar.value.toLowerCase();
 
         for (const cont of contactos) {                                             // Busco los contactos que coincidan en la
             let datos = cont.nombre + "" + cont.apellido + "" + cont.telefono;      // busqueda y los agrego al arreglo temporal
@@ -134,3 +144,21 @@ function filtrarElementos() {
         mostrarElementos(contactos);
     }
 }
+
+
+
+// SECCION BUSQUEDA
+// Inicia cerrado el div
+busDiv.style.display="none";
+var cerrado_bus = true
+
+//Si esta cerrado lo abre y viceversa
+abrirBus.addEventListener("click", () => {
+    if(cerrado_bus){
+        busDiv.style.display="flex";
+        cerrado_bus = false
+    } else {
+        busDiv.style.display="none";
+        cerrado_bus = true
+    }
+});

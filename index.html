@@ -25,21 +25,25 @@
     <main>
       <!-- BUSCAR -->
       <section>
-        <form action="./index.html">
-          <div>
-            <label>Buscar:</label>
-            <input type="search" id="buscar"/>
-          </div>
-        </form>
+        <div id="busqueda-div">
+          <label>Buscar:</label>
+          <input type="text" id="buscar"/>
+        </div>
       </section>
+
+      <section>
+        <div>
+          <button id="abrir-busqueda">Buscar</button>
+        </div>
+        <div>
+          <!-- Agregamos una clase boton para luego poder hacer un boton.css en componentes y reutilizarlo -->
+          <button id="abrirModal" class="boton agregar" aria-label="Agregar contacto"></button>
+        </div>
+      </section>
+
 
       <!-- AGREGAR CONTACTO -->
       <section>
-        <!-- Agregamos una clase boton para luego poder hacer un boton.css en componentes y reutilizarlo -->
-        <div class="boton agregar">
-          <button id="abrirModal" class="boton agregar" aria-label="Agregar contacto"></button>
-        </div>
-
         <div id="modal" class="modal"> <!-- Se agrego un id "modal" para luego utilizarlo en CSS -->
           <div class="modal-contenido">
             <h2>Nuevo contacto</h2>
