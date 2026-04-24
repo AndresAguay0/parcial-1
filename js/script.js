@@ -2,6 +2,7 @@
 var ids = -1;
 
 const contactos = [];   // Lista para almacenar los contactos
+const buscar = document.querySelector("#buscar"); // referencia al elemento en el html
 
 //AGREGAR CONTACTOS
 let abrir = document.getElementById("abrirModal");
@@ -87,5 +88,32 @@ function mostrarElementos(lista) {
         elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre}, ${cont.apellido} - ${cont.telefono}</p>`;
     
         listaContactos.appendChild(elemento);
+    }
+}
+
+// FILTRAR BUSQUEDA
+// LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
+buscar.addEventListener("input", () => {
+    filtrarElementos();
+});
+
+// Filtra los elementos que se muestran en base a la busqueda
+function filtrarElementos() {
+
+    if(buscar.value){
+        let filtrados = [] // Arreglo para guardar temporalmente los contactos filtrados
+
+        let busqueda = buscar.value.toLowerCase(); 
+
+        for (const cont of contactos) {                 // Busco los contactos que coincidan en la busqueda y los
+            let datos = cont.nombre + "" + cont.apellido + "" + cont.telefono;    // agrego al arreglo temporal
+            if(datos.toLowerCase().includes(busqueda)){
+                filtrados.push(cont);
+            }
+        }
+        mostrarElementos(filtrados);
+
+    } else {
+        mostrarElementos(contactos);
     }
 }
