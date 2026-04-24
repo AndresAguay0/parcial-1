@@ -55,9 +55,9 @@ guardar.addEventListener("click", function(){
         // Genero el contacto basado en los inputs
         const contacto = {
             id: ids,
-            nombre: inputNombre,
-            apellido: inputApellido,
-            telefono: inputTelefono
+            nombre: nombre,
+            apellido: apellido,
+            telefono: telefono
         };
 
         contactos.push(contacto); // Guardo el contacto
@@ -84,7 +84,7 @@ function mostrarElementos(lista) {
     for (const cont of lista) {     // Recorrio mi lista de contactos y los agrego a la lista HTML
 
         const elemento = document.createElement("li");
-        elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre} - ${cont.telefono}</p>`;
+        elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre}, ${cont.apellido} - ${cont.telefono}</p>`;
     
         listaContactos.appendChild(elemento);
     }
