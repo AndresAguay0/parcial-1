@@ -25,7 +25,7 @@ const inputTelefono = document.getElementById("telefono");
 modal.style.display="none";
 var cerrado = true
 
-abrir.addEventListener("click", function(){
+abrir.addEventListener("click", () => {
     if(cerrado){
         modal.style.display="flex";
         cerrado = false
@@ -35,7 +35,7 @@ abrir.addEventListener("click", function(){
     }
 });
 
-cerrar.addEventListener("click", function(){
+cerrar.addEventListener("click", () => {
     modal.style.display="none";
     cerrado = true
 });
@@ -67,15 +67,14 @@ function validar() {
         addGuardar(nombre, apellido, telefono);
     }
 
-
     mostrarElementos(contactos); // Muestro la lista de contactos
 
-    //limpio los campos del formulario
+    // Limpio los campos del formulario
     inputNombre.value = "";
     inputApellido.value = "";
     inputTelefono.value = "";
 
-    //cerrar el modal
+    // Cerrar el modal
     modal.style.display="none";
 };
 
