@@ -22,12 +22,22 @@ const inputTelefono = document.getElementById("telefono");
 
 
 // MODAL ----------------------------------------------------------------------
+modal.style.display="none";
+var cerrado = true
+
 abrir.addEventListener("click", function(){
-    modal.style.display="flex";
+    if(cerrado){
+        modal.style.display="flex";
+        cerrado = false
+    } else {
+        modal.style.display="none";
+        cerrado = true
+    }
 });
 
 cerrar.addEventListener("click", function(){
     modal.style.display="none";
+    cerrado = true
 });
 
 
