@@ -8,6 +8,8 @@ const contactos = [];
 
 // REFERENCIAS ----------------------------------------------------------------
 const buscar = document.querySelector("#buscar");
+const busDiv = document.getElementById("busqueda-div")
+const abrirBus = document.getElementById("abrir-busqueda")
 
 const abrir = document.getElementById("abrirModal");
 const modal = document.getElementById("modal");
@@ -142,3 +144,21 @@ function filtrarElementos() {
         mostrarElementos(contactos);
     }
 }
+
+
+
+// SECCION BUSQUEDA
+// Inicia cerrado el div
+busDiv.style.display="none";
+var cerrado_bus = true
+
+//Si esta cerrado lo abre y viceversa
+abrirBus.addEventListener("click", () => {
+    if(cerrado_bus){
+        busDiv.style.display="flex";
+        cerrado_bus = false
+    } else {
+        busDiv.style.display="none";
+        cerrado_bus = true
+    }
+});
