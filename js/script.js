@@ -9,7 +9,7 @@ let modal = document.getElementById("modal");
 let guardar = document.getElementById("guardar");
 let cerrar = document.getElementById("cerrar");
 
-let lista = document.getElementById("lista-contactos");
+let listaContactos = document.getElementById("lista-contactos");
 let inputNombre = document.getElementById("nombre");
 let inputApellido = document.getElementById("apellido");
 let inputTelefono = document.getElementById("telefono");
@@ -64,6 +64,8 @@ guardar.addEventListener("click", function(){
 
     }
 
+    mostrarElementos(contactos); // Muestro la lista de contactos
+
     //limpio los campos del formulario
     inputNombre.value = "";
     inputApellido.value = "";
@@ -73,3 +75,17 @@ guardar.addEventListener("click", function(){
     modal.style.display="none";
 });
 // TERMINA AGREGAR CONTACTOS
+
+// MOSTRAR CONTACTOS
+function mostrarElementos(lista) {
+
+    listaContactos.innerHTML = "";  // Limpio la lista HTML
+
+    for (const cont of lista) {     // Recorrio mi lista de contactos y los agrego a la lista HTML
+
+        const elemento = document.createElement("li");
+        elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre} - ${cont.telefono}</p>`;
+    
+        listaContactos.appendChild(elemento);
+    }
+}
