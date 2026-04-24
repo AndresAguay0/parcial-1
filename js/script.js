@@ -1,69 +1,62 @@
 // Variable para mantener control de las IDs
 var ids = -1;
 
-const contactos = [];   // Lista para almacenar los contactos
-const buscar = document.querySelector("#buscar"); // referencia al elemento en el html
+// Lista para almacenar los contactos
+const contactos = [];   
 
-//AGREGAR CONTACTOS
-let abrir = document.getElementById("abrirModal");
-let modal = document.getElementById("modal");
-let guardar = document.getElementById("guardar");
-let cerrar = document.getElementById("cerrar");
 
-let listaContactos = document.getElementById("lista-contactos");
-let inputNombre = document.getElementById("nombre");
-let inputApellido = document.getElementById("apellido");
-let inputTelefono = document.getElementById("telefono");
 
-//para abrir el modal
+// REFERENCIAS ----------------------------------------------------------------
+const buscar = document.querySelector("#buscar");
+
+const abrir = document.getElementById("abrirModal");
+const modal = document.getElementById("modal");
+const agendar = document.getElementById("agendar");
+const cerrar = document.getElementById("cerrar");
+
+const listaContactos = document.getElementById("lista-contactos");
+const inputNombre = document.getElementById("nombre");
+const inputApellido = document.getElementById("apellido");
+const inputTelefono = document.getElementById("telefono");
+
+
+
+// MODAL ----------------------------------------------------------------------
 abrir.addEventListener("click", function(){
     modal.style.display="flex";
 });
 
-//para cerrar el modal
 cerrar.addEventListener("click", function(){
     modal.style.display="none";
 });
 
-//para guardar el contacto
-guardar.addEventListener("click", function(){
 
+
+// GUARDAR CONTACTOS ----------------------------------------------------------
+agendar.addEventListener("click", () => {
+    validar();
+});
+
+function validar() {
+
+    // Guardado de inputs
     let nombre = inputNombre.value;
     let apellido = inputApellido.value;
     let telefono = inputTelefono.value;
 
-    //validar que los campos no estén vacíos
-    //no valido apellido ya que hay gente que pone todo en el campo nombre o agenda sin apellido.
+    // Validacion de datos
     if(nombre === "" || telefono === ""){
         alert("Los campos nombre y teléfono son obligatorios.");
         return;
     }
 
-    //confirmar que quiere agregar el contacto
+    // Confirmar que quiere agregar el contacto
     let confirmar = confirm(`¿Desea agregar el contacto ${nombre} ${apellido} con el teléfono ${telefono}?`);
     if(confirmar){
-        // //crear contacto
-        // let li = document.createElement("li");
-        // li.textContent = `${nombre} ${apellido} - ${telefono}`;
 
-        // //agregar contacto a la lista
-        // lista.appendChild(li);
-
-        // NUEVA IMPLEMENTACION -------------------------------------------
-
-        ids ++; // Aumento las ids para que no se repitan
-    
-        // Genero el contacto basado en los inputs
-        const contacto = {
-            id: ids,
-            nombre: nombre,
-            apellido: apellido,
-            telefono: telefono
-        };
-
-        contactos.push(contacto); // Guardo el contacto
-
+        addGuardar(nombre, apellido, telefono);
     }
+
 
     mostrarElementos(contactos); // Muestro la lista de contactos
 
@@ -74,10 +67,25 @@ guardar.addEventListener("click", function(){
 
     //cerrar el modal
     modal.style.display="none";
-});
-// TERMINA AGREGAR CONTACTOS
+};
 
-// MOSTRAR CONTACTOS
+function addGuardar(nombre, apellido, telefono) {
+    ids ++; // Aumento las ids para que no se repitan
+    
+    // Genero el contacto basado en los inputs
+    const contacto = {
+        id: ids,
+        nombre: nombre,
+        apellido: apellido,
+        telefono: telefono
+    };
+
+    contactos.push(contacto); // Guardo el contacto
+}
+
+
+
+// MOSTRAR CONTACTOS ----------------------------------------------------------
 function mostrarElementos(lista) {
 
     listaContactos.innerHTML = "";  // Limpio la lista HTML
@@ -91,7 +99,7 @@ function mostrarElementos(lista) {
     }
 }
 
-// FILTRAR BUSQUEDA
+// FILTRAR BUSQUEDA ----------------------------------------------------------------------
 // LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
 buscar.addEventListener("input", () => {
     filtrarElementos();
@@ -105,8 +113,8 @@ function filtrarElementos() {
 
         let busqueda = buscar.value.toLowerCase(); 
 
-        for (const cont of contactos) {                 // Busco los contactos que coincidan en la busqueda y los
-            let datos = cont.nombre + "" + cont.apellido + "" + cont.telefono;    // agrego al arreglo temporal
+        for (const cont of contactos) {                                             // Busco los contactos que coincidan en la
+            let datos = cont.nombre + "" + cont.apellido + "" + cont.telefono;      // busqueda y los agrego al arreglo temporal
             if(datos.toLowerCase().includes(busqueda)){
                 filtrados.push(cont);
             }
