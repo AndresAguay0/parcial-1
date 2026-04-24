@@ -76,7 +76,7 @@ function validar() {
 
     // Cerrar el modal
     modal.style.display="none";
-};
+}
 
 function addGuardar(nombre, apellido, telefono) {
     ids ++; // Aumento las ids para que no se repitan
@@ -108,6 +108,8 @@ function mostrarElementos(lista) {
     }
 }
 
+
+
 // FILTRAR BUSQUEDA ----------------------------------------------------------------------
 // LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
 buscar.addEventListener("input", () => {
@@ -120,7 +122,7 @@ function filtrarElementos() {
     if(buscar.value){
         let filtrados = [] // Arreglo para guardar temporalmente los contactos filtrados
 
-        let busqueda = buscar.value.toLowerCase(); 
+        let busqueda = buscar.value.toLowerCase();
 
         for (const cont of contactos) {                                             // Busco los contactos que coincidan en la
             let datos = cont.nombre + "" + cont.apellido + "" + cont.telefono;      // busqueda y los agrego al arreglo temporal
