@@ -2,7 +2,7 @@
 var ids = -1;
 
 // Lista para almacenar los contactos
-const contactos = [];   
+const contactos = [];
 
 
 
