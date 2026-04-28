@@ -1,0 +1,155 @@
+@import url(./components/header.css);
+@import url(./components/modal.css);
+@import url(./components/footer.css);
+@import url(./components/botones.css);
+:root{
+  --color-fondo: #1e1f24;
+  --color-letras:#ffffff;
+  --color-fondo-contacto: #37393d;
+  --color-footer: #0f0f10;
+  --boton-color:#2d4374;
+  --boton-cancelar-eliminar:#d13739;
+
+}
+
+.modal-contenido {
+  border: 4px solid var(--boton-color);
+  border-radius: 10px;
+  background: var(--color-fondo-contacto);
+  color: var(--color-letras);
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+h1{
+    font-size: 36px;
+    color: var(--color-letras);
+    font-family: "Alfa Slab One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+input {
+  font-family: "Signika", sans-serif;
+  width: 80%;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid var(--color-letras);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#agendar{
+  background: var(--boton-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: var(--color-letras);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+#agendar:hover {
+  color: var(--color-fondo);
+  transform: scale(1.05);
+}
+
+#cerrar{
+  background: var(--boton-color);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: var(--color-letras);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+#cerrar:hover {
+  color: var(--color-fondo);
+  transform: scale(1.05);
+}
+/* Boton de agregar contacto */
+#abrirModal {
+    background-image: url("../assets/img/boton_agregar.png");
+}
+
+body{
+    font-family: "Signika", sans-serif;
+    background-color: var(--color-fondo);
+}
+
+
+#lista-contactos {
+  font-family: "Signika", sans-serif;
+  font-optical-sizing: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+  color: var(--color-letras);
+}
+#lista-contactos li {
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  background: var(--color-fondo-contacto);
+  padding: 4px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  width: 350px;
+  height: 30px;
+  margin: 0 auto;
+}
+
+.btn-eliminar {
+  
+  background-color: var(--boton-cancelar-eliminar);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: var(--color-letras);
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 80px;
+  margin-right: 5px;
+}
+
+/* hover */
+.btn-eliminar:hover {
+  transform: scale(1.05);
+  color: var(--color-fondo);
+}
+
+#abrir-busqueda{
+    background-image: url("../assets/img/boton_busqueda.png");
+}
+
+
+#busqueda-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 10px auto;
+}
+
+#busqueda-div label {
+  font-size: 18px;
+  color: var(--color-letras);
+}
+
+
+#buscar {
+  padding: 10px 15px;
+  border-radius: 20px;
+  width: 220px;
+  background: var(--color-fondo-contacto);
+  color: var(--color-letras);
+
+
+}

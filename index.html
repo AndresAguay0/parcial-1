@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Personal</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
+    <meta
+      name="description"
+      content="Tu Agenda Personal de contactos. Busca y comunicate con quien quieras. Agrega o elimina cualquier contacto que desees."
+    />
+    <link rel="icon" href="./assets/favicon/logo.png" />
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <img src="./assets/favicon/logo.png" alt="logo-agenda-personal" />
+        <h1>Agenda Personal</h1>
+      </div>
+    </header>
+
+    <main>
+      
+      <section>
+        <div class="botones">
+          <button id="abrir-busqueda"></button>
+          <button id="abrirModal"></button>
+        </div>
+      </section>
+
+      <!-- BUSCAR -->
+      <section>
+        <div id="busqueda-div">
+          <label>Buscar:</label>
+          <input type="text" id="buscar"/>
+        </div>
+      </section>
+
+
+
+
+      <!-- AGREGAR CONTACTO -->
+      <section>
+        <div id="modal" class="modal"> <!-- Se agrego un id "modal" para luego utilizarlo en CSS -->
+          <div class="modal-contenido">
+            <h2>Nuevo contacto</h2>
+
+            <form>
+            <!-- Datos del contacto -->
+            <input type="text" id="nombre" placeholder="Nombre" required/><br /><br />
+            <input type="text" id="apellido" placeholder="Apellido" /><br /><br />
+            <input type="tel" id="telefono" placeholder="Teléfono" required/>
+
+            <!-- Estos botones sirven para luego cerrar la ventana desplegada al termino del ingreso de datos -->
+            <button type="button" id="agendar">Agendar</button>
+            <button type="button" id="cerrar">Cancelar</button>
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+      <!--LISTA DE CONTACTOS -->
+      <section>
+        <ol id="lista-contactos"></ol>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Agenda Personal - Todos los derechos reservados</p>
+    </footer>
+
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>

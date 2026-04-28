@@ -1,0 +1,19 @@
+.botones{
+    display: flex;
+    justify-content: center ;
+    
+}
+
+.botones button{
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
