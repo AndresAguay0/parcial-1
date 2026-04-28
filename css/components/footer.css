@@ -2,5 +2,5 @@ footer {
     display: grid;
     text-align: center;
     background-color: var(--color-fondo-contacto);
-    color: var(--color-fondo)
+    color: var(--color-footer)
 }
