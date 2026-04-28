@@ -11,19 +11,27 @@
       name="description"
       content="Tu Agenda Personal de contactos. Busca y comunicate con quien quieras. Agrega o elimina cualquier contacto que desees."
     />
-    <link rel="icon" href="./assets/favicon/logopagina.png" />
+    <link rel="icon" href="./assets/favicon/logo.png" />
     <link rel="stylesheet" href="./css/index.css" />
   </head>
 
   <body>
     <header>
       <div>
-        <img src="./assets/img/logo.png" alt="logo-agenda-personal" />
+        <img src="./assets/favicon/logo.png" alt="logo-agenda-personal" />
         <h1>Agenda Personal</h1>
       </div>
     </header>
 
     <main>
+      
+      <section>
+        <div class="botones">
+          <button id="abrir-busqueda"></button>
+          <button id="abrirModal"></button>
+        </div>
+      </section>
+
       <!-- BUSCAR -->
       <section>
         <div id="busqueda-div">
@@ -32,15 +40,7 @@
         </div>
       </section>
 
-      <section>
-        <div>
-          <button id="abrir-busqueda"</button>
-        </div>
-        <div>
-          <!-- Agregamos una clase boton para luego poder hacer un boton.css en componentes y reutilizarlo -->
-          <button id="abrirModal" class="boton agregar" aria-label="Agregar contacto"></button>
-        </div>
-      </section>
+
 
 
       <!-- AGREGAR CONTACTO -->
