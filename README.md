@@ -51,4 +51,27 @@
 
 ## Funciones
 
-...
+- validar();
+
+Lo primero que hace esta funcion es guardar los datos ingresados en variables locales para poder trabajar directamente con los inputs.  
+Despues se encarga de validar que no haya campos vacíos o que sean correctos.  
+Luego pide una confirmación para agregar el contacto, así llama a la funcion addGuardar().  
+Por último muestra los contactos actuales (que ahora están actualizados), limpia los campos y cierra la seccion de agregar contacto.  
+
+- addGuardar();  
+
+Esta funcion primero incrementa las ids generales de los contactos (ya que se está agregando uno nuevo).  
+Después genera un JSON con los datos del contacto y su propia id.  
+Por último lo pushea a la lista de contactos.
+
+- mostrarElementos();
+
+Esta funcion primero limpia la lista del index y la deja vacía.  
+Despues se recorre la lista ...
+
+- filtrarElementos();
+
+Primero se fija si hay algo valido en el input del usuario.  
+Si hay algo en la barra de busqueda, crea un arreglo temporal para guardar los datos encontrados.  
+Después busca a los contactos del arreglo que contengan en alguna parte la busqueda hecha por el usuario. Los que coinciden los guarda en la lista temporal.
+Una vez recorrida la lista, muestra los elementos de la lista filtrada.
