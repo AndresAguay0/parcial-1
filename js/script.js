@@ -4,8 +4,8 @@ var ids = -1;
 // Lista para almacenar los contactos
 const contactos = [];
 
-var cerrado;
-var cerrado_bus;
+var cerrado = true;
+var cerrado_bus = true;
 
 
 
@@ -162,15 +162,17 @@ function filtrarElementos() {
 
 // ---------------------------------------------- AGREGAR CONTACTOS
 modal.style.display="none";
-cerrado = true
+abrir.style.filter= "saturate(1)";
 
 // Si esta cerrada la seccion lo la despliega y viceversa
 abrir.addEventListener("click", () => {
     if(cerrado){
         modal.style.display="flex";
+        abrir.style.filter= "saturate(0)";
         cerrado = false
     } else {
         modal.style.display="none";
+        abrir.style.filter= "saturate(1)";
         cerrado = true
     }
 });
@@ -178,6 +180,7 @@ abrir.addEventListener("click", () => {
 // Cierra la seccion desde un boton de cerrar
 cerrar.addEventListener("click", () => {
     modal.style.display="none";
+    abrir.style.filter= "saturate(1)";
     cerrado = true
 });
 
@@ -188,15 +191,17 @@ agendar.addEventListener("click", () => {
 
 // ---------------------------------------------- BUSQUEDA
 busDiv.style.display="none";
-cerrado_bus = true
+abrirBus.style.filter= "saturate(1)";
 
 //Si esta cerrada la seccion lo la despliega y viceversa
 abrirBus.addEventListener("click", () => {
     if(cerrado_bus){
         busDiv.style.display="flex";
+        abrirBus.style.filter= "saturate(0)";
         cerrado_bus = false
     } else {
         busDiv.style.display="none";
+        abrirBus.style.filter= "saturate(1)";
         cerrado_bus = true
     }
 });
