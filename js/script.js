@@ -6,7 +6,8 @@ const contactos = [];
 
 
 
-// REFERENCIAS ----------------------------------------------------------------
+// --------------------------------- REFERENCIAS ---------------------------------------------------
+
 const buscar = document.querySelector("#buscar");
 const busDiv = document.getElementById("busqueda-div")
 const abrirBus = document.getElementById("abrir-busqueda")
@@ -23,33 +24,9 @@ const inputTelefono = document.getElementById("telefono");
 
 
 
+// ------------------------------ FUNCIONES -------------------------------------------------------
 
-// MODAL ----------------------------------------------------------------------
-modal.style.display="none";
-var cerrado = true
-
-abrir.addEventListener("click", () => {
-    if(cerrado){
-        modal.style.display="flex";
-        cerrado = false
-    } else {
-        modal.style.display="none";
-        cerrado = true
-    }
-});
-
-cerrar.addEventListener("click", () => {
-    modal.style.display="none";
-    cerrado = true
-});
-
-
-
-// GUARDAR CONTACTOS ----------------------------------------------------------
-agendar.addEventListener("click", () => {
-    validar();
-});
-
+// ---------------------------------------------- VALIDAR CONTACTOS
 function validar() {
 
     // Guardado de inputs
@@ -81,6 +58,9 @@ function validar() {
     modal.style.display="none";
 }
 
+
+
+// ---------------------------------------------- GUARDAR CONTACTOS
 function addGuardar(nombre, apellido, telefono) {
     ids ++; // Aumento las ids para que no se repitan
     
@@ -94,7 +74,10 @@ function addGuardar(nombre, apellido, telefono) {
 
     contactos.push(contacto); // Guardo el contacto
 }
-// ELIMINAR CONTACTOS ----------------------------------------------------------
+
+
+
+// ---------------------------------------------- ELIMINAR CONTACTOS
 function eliminarContacto(id) {
 
     let confirmar = confirm("¿Seguro que querés eliminar este contacto?");
@@ -120,7 +103,7 @@ function eliminarContacto(id) {
 
 
 
-// MOSTRAR CONTACTOS ----------------------------------------------------------
+// ---------------------------------------------- MOSTRAR CONTACTOS
 function mostrarElementos(lista) {
 
     listaContactos.innerHTML = "";  // Limpio la lista HTML
@@ -147,18 +130,7 @@ function mostrarElementos(lista) {
 
 
 
-// FILTRAR BUSQUEDA ----------------------------------------------------------------------
-// LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
-buscar.addEventListener("input", () => {
-    filtrarElementos();
-});
-
-buscar.addEventListener("keypress", (e) =>{
-    if(e.key == "Enter"){
-        buscar.value = ""
-    }
-});
-
+// ---------------------------------------------- FILTRAR BUSQUEDA
 // Filtra los elementos que se muestran en base a la busqueda
 function filtrarElementos() {
 
@@ -182,12 +154,39 @@ function filtrarElementos() {
 
 
 
-// SECCION BUSQUEDA
-// Inicia cerrado el div
+// -------------------------- EVENT LISTENERS Y FUNCIONES SIMPLES ---------------------------------
+
+// ---------------------------------------------- AGREGAR CONTACTOS
+modal.style.display="none";
+var cerrado = true
+
+// Si esta cerrada la seccion lo la despliega y viceversa
+abrir.addEventListener("click", () => {
+    if(cerrado){
+        modal.style.display="flex";
+        cerrado = false
+    } else {
+        modal.style.display="none";
+        cerrado = true
+    }
+});
+
+// Cierra la seccion desde un boton de cerrar
+cerrar.addEventListener("click", () => {
+    modal.style.display="none";
+    cerrado = true
+});
+
+// LLama a la funcion validar() cuando se presiona el boton de agendar
+agendar.addEventListener("click", () => {
+    validar();
+});
+
+// ---------------------------------------------- BUSQUEDA
 busDiv.style.display="none";
 var cerrado_bus = true
 
-//Si esta cerrado lo abre y viceversa
+//Si esta cerrada la seccion lo la despliega y viceversa
 abrirBus.addEventListener("click", () => {
     if(cerrado_bus){
         busDiv.style.display="flex";
@@ -195,5 +194,18 @@ abrirBus.addEventListener("click", () => {
     } else {
         busDiv.style.display="none";
         cerrado_bus = true
+    }
+});
+
+// ---------------------------------------------- FILTRO
+// LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
+buscar.addEventListener("input", () => {
+    filtrarElementos();
+});
+
+// Limpia el buscador cuando se presiona Enter
+buscar.addEventListener("keypress", (e) =>{
+    if(e.key == "Enter"){
+        buscar.value = ""
     }
 });
