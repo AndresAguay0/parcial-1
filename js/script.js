@@ -59,6 +59,7 @@ function validar() {
 
     // Cerrar el modal
     modal.style.display="none";
+    abrir.style.filter= "saturate(1)";
     cerrado = true
 }
 
@@ -112,7 +113,7 @@ function mostrarElementos(lista) {
 
     listaContactos.innerHTML = "";  // Limpio la lista HTML
 
-    for (const cont of lista) {     // Recorrio mi lista de contactos y los agrego a la lista HTML
+    for (const cont of lista) {     // Recorro mi lista de contactos y los agrego a la lista HTML
 
         const elemento = document.createElement("li");
         elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre}, ${cont.apellido} - ${cont.telefono}</p>`;
@@ -127,7 +128,7 @@ function mostrarElementos(lista) {
             eliminarContacto(cont.id);
         });
 
-        elemento.appendChild(btnEliminar);  //Inserta el botón dentro de li
+        elemento.appendChild(btnEliminar);  // Inserto el botón dentro de li
         listaContactos.appendChild(elemento);
     }
 }
