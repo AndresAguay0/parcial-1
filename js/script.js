@@ -4,6 +4,9 @@ var ids = -1;
 // Lista para almacenar los contactos
 const contactos = [];
 
+var cerrado;
+var cerrado_bus;
+
 
 
 // --------------------------------- REFERENCIAS ---------------------------------------------------
@@ -56,6 +59,7 @@ function validar() {
 
     // Cerrar el modal
     modal.style.display="none";
+    cerrado = true
 }
 
 
@@ -158,7 +162,7 @@ function filtrarElementos() {
 
 // ---------------------------------------------- AGREGAR CONTACTOS
 modal.style.display="none";
-var cerrado = true
+cerrado = true
 
 // Si esta cerrada la seccion lo la despliega y viceversa
 abrir.addEventListener("click", () => {
@@ -184,7 +188,7 @@ agendar.addEventListener("click", () => {
 
 // ---------------------------------------------- BUSQUEDA
 busDiv.style.display="none";
-var cerrado_bus = true
+cerrado_bus = true
 
 //Si esta cerrada la seccion lo la despliega y viceversa
 abrirBus.addEventListener("click", () => {
