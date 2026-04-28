@@ -4,9 +4,13 @@ var ids = -1;
 // Lista para almacenar los contactos
 const contactos = [];
 
+var cerrado = true;
+var cerrado_bus = true;
 
 
-// REFERENCIAS ----------------------------------------------------------------
+
+// --------------------------------- REFERENCIAS ---------------------------------------------------
+
 const buscar = document.querySelector("#buscar");
 const busDiv = document.getElementById("busqueda-div")
 const abrirBus = document.getElementById("abrir-busqueda")
@@ -23,33 +27,9 @@ const inputTelefono = document.getElementById("telefono");
 
 
 
+// ------------------------------ FUNCIONES -------------------------------------------------------
 
-// MODAL ----------------------------------------------------------------------
-modal.style.display="none";
-var cerrado = true
-
-abrir.addEventListener("click", () => {
-    if(cerrado){
-        modal.style.display="flex";
-        cerrado = false
-    } else {
-        modal.style.display="none";
-        cerrado = true
-    }
-});
-
-cerrar.addEventListener("click", () => {
-    modal.style.display="none";
-    cerrado = true
-});
-
-
-
-// GUARDAR CONTACTOS ----------------------------------------------------------
-agendar.addEventListener("click", () => {
-    validar();
-});
-
+// ---------------------------------------------- VALIDAR CONTACTOS
 function validar() {
 
     // Guardado de inputs
@@ -79,8 +59,13 @@ function validar() {
 
     // Cerrar el modal
     modal.style.display="none";
+    abrir.style.filter= "saturate(1)";
+    cerrado = true
 }
 
+
+
+// ---------------------------------------------- GUARDAR CONTACTOS
 function addGuardar(nombre, apellido, telefono) {
     ids ++; // Aumento las ids para que no se repitan
     
@@ -94,7 +79,10 @@ function addGuardar(nombre, apellido, telefono) {
 
     contactos.push(contacto); // Guardo el contacto
 }
-// ELIMINAR CONTACTOS ----------------------------------------------------------
+
+
+
+// ---------------------------------------------- ELIMINAR CONTACTOS
 function eliminarContacto(id) {
 
     let confirmar = confirm("¿Seguro que querés eliminar este contacto?");
@@ -120,12 +108,12 @@ function eliminarContacto(id) {
 
 
 
-// MOSTRAR CONTACTOS ----------------------------------------------------------
+// ---------------------------------------------- MOSTRAR CONTACTOS
 function mostrarElementos(lista) {
 
     listaContactos.innerHTML = "";  // Limpio la lista HTML
 
-    for (const cont of lista) {     // Recorrio mi lista de contactos y los agrego a la lista HTML
+    for (const cont of lista) {     // Recorro mi lista de contactos y los agrego a la lista HTML
 
         const elemento = document.createElement("li");
         elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre}, ${cont.apellido} - ${cont.telefono}</p>`;
@@ -140,25 +128,14 @@ function mostrarElementos(lista) {
             eliminarContacto(cont.id);
         });
 
-        elemento.appendChild(btnEliminar);  //Inserta el botón dentro de li
+        elemento.appendChild(btnEliminar);  // Inserto el botón dentro de li
         listaContactos.appendChild(elemento);
     }
 }
 
 
 
-// FILTRAR BUSQUEDA ----------------------------------------------------------------------
-// LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
-buscar.addEventListener("input", () => {
-    filtrarElementos();
-});
-
-buscar.addEventListener("keypress", (e) =>{
-    if(e.key == "Enter"){
-        buscar.value = ""
-    }
-});
-
+// ---------------------------------------------- FILTRAR BUSQUEDA
 // Filtra los elementos que se muestran en base a la busqueda
 function filtrarElementos() {
 
@@ -182,18 +159,63 @@ function filtrarElementos() {
 
 
 
-// SECCION BUSQUEDA
-// Inicia cerrado el div
-busDiv.style.display="none";
-var cerrado_bus = true
+// -------------------------- EVENT LISTENERS Y FUNCIONES SIMPLES ---------------------------------
 
-//Si esta cerrado lo abre y viceversa
+// ---------------------------------------------- AGREGAR CONTACTOS
+modal.style.display="none";
+abrir.style.filter= "saturate(1)";
+
+// Si esta cerrada la seccion lo la despliega y viceversa
+abrir.addEventListener("click", () => {
+    if(cerrado){
+        modal.style.display="flex";
+        abrir.style.filter= "saturate(0)";
+        cerrado = false
+    } else {
+        modal.style.display="none";
+        abrir.style.filter= "saturate(1)";
+        cerrado = true
+    }
+});
+
+// Cierra la seccion desde un boton de cerrar
+cerrar.addEventListener("click", () => {
+    modal.style.display="none";
+    abrir.style.filter= "saturate(1)";
+    cerrado = true
+});
+
+// LLama a la funcion validar() cuando se presiona el boton de agendar
+agendar.addEventListener("click", () => {
+    validar();
+});
+
+// ---------------------------------------------- BUSQUEDA
+busDiv.style.display="none";
+abrirBus.style.filter= "saturate(1)";
+
+//Si esta cerrada la seccion lo la despliega y viceversa
 abrirBus.addEventListener("click", () => {
     if(cerrado_bus){
         busDiv.style.display="flex";
+        abrirBus.style.filter= "saturate(0)";
         cerrado_bus = false
     } else {
         busDiv.style.display="none";
+        abrirBus.style.filter= "saturate(1)";
         cerrado_bus = true
+    }
+});
+
+// ---------------------------------------------- FILTRO
+// LLama a la funcion de filtrado cada vez que se escribe algo en el buscador
+buscar.addEventListener("input", () => {
+    filtrarElementos();
+});
+
+// Limpia el buscador cuando se presiona Enter
+buscar.addEventListener("keypress", (e) =>{
+    if(e.key == "Enter"){
+        buscar.value = ""
     }
 });
