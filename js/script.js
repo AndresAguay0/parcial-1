@@ -23,6 +23,7 @@ const inputTelefono = document.getElementById("telefono");
 
 
 
+
 // MODAL ----------------------------------------------------------------------
 modal.style.display="none";
 var cerrado = true
@@ -93,6 +94,29 @@ function addGuardar(nombre, apellido, telefono) {
 
     contactos.push(contacto); // Guardo el contacto
 }
+// ELIMINAR CONTACTOS ----------------------------------------------------------
+function eliminarContacto(id) {
+
+    let confirmar = confirm("¿Seguro que querés eliminar este contacto?");
+    if(!confirmar) return;
+
+    // Eliminar del array
+    let index = -1;
+
+    for (let i = 0; i < contactos.length; i++) {
+        if (contactos[i].id === id) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index !== -1) {
+        contactos.splice(index, 1);
+    }
+
+    // Se actualiza la lista
+    mostrarElementos(contactos);
+}
 
 
 
@@ -105,7 +129,18 @@ function mostrarElementos(lista) {
 
         const elemento = document.createElement("li");
         elemento.innerHTML = `<p id="${cont.id}" class="contacto">${cont.nombre}, ${cont.apellido} - ${cont.telefono}</p>`;
-    
+
+        //Boton eliminar para cada contacto
+        const btnEliminar = document.createElement("button");
+        btnEliminar.textContent = "Eliminar";
+        btnEliminar.classList.add("btn-eliminar");
+
+        //Evento eliminar
+        btnEliminar.addEventListener("click", () => {
+            eliminarContacto(cont.id);
+        });
+
+        elemento.appendChild(btnEliminar);  //Inserta el botón dentro de li
         listaContactos.appendChild(elemento);
     }
 }

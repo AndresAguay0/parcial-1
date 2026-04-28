@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: var(--color-fondo-contacto);
+  color: var(--color-letras);
+  
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+header img {
+  width: 80px;
+  height: 80px;
+}
